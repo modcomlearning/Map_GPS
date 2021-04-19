@@ -50,7 +50,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                location ->
 
                if (location!=null){
-
+                     val currentLocation = LatLng(location.latitude, location.longitude)  //this is your current location
+                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 12f))
                }//end if
 
                else {
