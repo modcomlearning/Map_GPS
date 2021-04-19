@@ -3,6 +3,7 @@ package com.modcom.mapsapp
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -43,10 +44,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 }//end if
 
+           //GET user location if they allowed the permisions
+           mMap.isMyLocationEnabled = true    //user need to activate GPS to ON on their settings
+           fusedLocationClient.lastLocation.addOnSuccessListener(this) {
+               location ->
 
+               if (location!=null){
 
+               }//end if
 
+               else {
+                   Toast.makeText(applicationContext, "We can't retrieve your location", Toast.LENGTH_LONG).show()
+               }//end else
 
+           }//end fused successlistener
 
 
     }//end gps set up
